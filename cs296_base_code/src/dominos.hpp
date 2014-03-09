@@ -25,10 +25,10 @@
 #ifndef _DOMINOS_HPP_
 #define _DOMINOS_HPP_
 #include "dominos.cpp"
-#include "callbacks.cpp"
-//#include "callbacks.hpp"
-#include "cs296_base.cpp"
-//#include "cs296_base.hpp"
+#include "callbacks.hpp"
+#include "cs296_base.hpp"
+
+
   //! This is the class that sets up the Box2D simulation world
   //! Notice the public inheritance - why do we inherit the base_sim_t class?
   
@@ -127,7 +127,8 @@
   
   */
   
-  
+  // m_bodyB->SetAngularVelocity(-100);
+   //m_bodyC->SetAngularVelocity(-100);
   
   
   
@@ -148,7 +149,7 @@
 	}
 	
 	
-	
+
 	void keyboard(unsigned char key)
   {
     switch (key)
@@ -177,23 +178,17 @@
     
   }
   
- void step(settings_t* settings){
- cs296::base_sim_t::step(settings); 
-  m_debug_draw.DrawString(5, m_text_line, "Current joint angle: %f deg", m_joint->GetJointAngle() * RADTODEG);
-  m_text_line += 15;
-  m_debug_draw.DrawString(5, m_text_line, "Current joint speed: %f deg/s", m_joint->GetJointSpeed() * RADTODEG);
-  m_text_line += 15;
-            m_debug_draw.DrawString(5, m_text_line, "Now we have a foo test");
-            m_text_line += 15;
-        }
+
     
     static cs296::base_sim_t* create()
     {
       return new dominos_t;
     }
-    
-  };
-  namespace cs296{ 
+   
+
+  
+};
+namespace cs296{ 
   sim_t *sim = new sim_t("Dominos", dominos_t::create);
 }
 

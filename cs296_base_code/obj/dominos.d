@@ -157,12 +157,4 @@ obj/dominos.o: src/dominos.cpp src/cs296_base.hpp src/render.hpp \
  /usr/lib/gcc/x86_64-linux-gnu/4.6/include/stdint.h /usr/include/stdint.h \
  /usr/include/GL/glu.h /usr/include/GL/freeglut_ext.h \
  /usr/include/c++/4.6/cstring src/dominos.hpp src/dominos.cpp \
- src/callbacks.hpp src/callbacks.cpp /usr/include/GL/glui.h \
- /usr/include/GL/glut.h /usr/include/c++/4.6/cstdio /usr/include/libio.h \
- /usr/include/_G_config.h \
- /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
- /usr/include/x86_64-linux-gnu/bits/stdio.h \
- /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/c++/4.6/vector \
- /usr/include/c++/4.6/bits/stl_vector.h \
- /usr/include/c++/4.6/bits/stl_bvector.h \
- /usr/include/c++/4.6/bits/vector.tcc src/cs296_base.cpp
+ src/callbacks.hpp
