@@ -38,7 +38,7 @@
 #define RADTODEG 57.295779513082320876f
 using namespace std;
 
-//#include "dominos.hpp"
+#include "cs296_base.hpp"
 #include "callbacks.hpp"
 
 

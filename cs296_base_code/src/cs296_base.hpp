@@ -27,6 +27,7 @@
 #define _CS296BASE_HPP_
 
 #include "render.hpp"
+#include "dominos.hpp"
 #include <Box2D/Box2D.h>
 #include <cstdlib>
 
@@ -53,7 +54,7 @@ namespace cs296
       velocity_iterations(8),
       position_iterations(3),
       draw_shapes(1),
-      draw_joints(1),
+      draw_joints(0),
       draw_AABBs(0),
       draw_pairs(0),
       draw_contact_points(0),

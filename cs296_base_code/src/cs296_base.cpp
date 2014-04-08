@@ -17,7 +17,7 @@
 */
 
 #include "cs296_base.hpp"
-//#include "dominos.hpp"
+#include "dominos.hpp"
 #include <cstdio>
 using namespace std;
 using namespace cs296;

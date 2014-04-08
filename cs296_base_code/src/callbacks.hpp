@@ -62,7 +62,7 @@ namespace cs296
   
   //! GLUT display callback
   //! This draws every time a draw event is posted. 
-  //! It also xecutes the main simulation loop by calling test->step(...)
+  //! It also executes the main simulation loop by calling test->step(...)
   static void display_cb(void);
   
   //! GLUI callback - Called when the restart button is pressed
