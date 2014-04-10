@@ -1,0 +1,53 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>g16_lab09_report</title>
+</head>
+<body>
+<body style="background-color:yellow;">
+<h1> Analysis of Graphs from Lab05 </h1>
+<p>This webpage has been made by Group 16 for CS-296</p>
+<center><tr>  Darsh Shah    120010010    <tr>    email : darshs@cse.iitb.ac.in<tr>   <br><tr>  Ayush Deothia    120050025    <tr>    email : ayushdeothia@cse.iitb.ac.in<tr> <br><tr>  Dheeraj Reddy    120050061    <tr>    email : redmond@cse.iitb.ac.in<tr><tr>tt</center>
+<h1> Graph 1: Plot depicting Average Step and Loop times (vs) iteration number </h1>
+The loop-time increases as the iteration number increase, and it is not difficult to see why. For every additional loop iteration, more time is consumed. And therefore as the iterations increase, the loop time also increases.
+<br> The average steptime, is seen better in Graph 2. <br> <I> x</I> iterations of the loop, consists of <I> x</I> distinct steps of our simulation.
+Thus the average is the sum of times of all <I> x</I> steps divided by <I> x</I>. Since the graph is not a horizontal curve, we can 
+easily conclude that all steps of our simulation are not taking the same amount of time.Initially the average step time is decreasing, implying that time taken per step decreases for the initial steps . But after some 800 iterations, the graph starts to rise, meaning that step 800 onwards, each step of the simulation is taking more time.
+<br><br> L=Loop time, i=time taken for ith step, N=Iteration Number and S=average step time
+
+<br><br>
+<center>L=<span>&Sigma;</span>i</center><br>
+<center>S=<sup>L</sup>&frasl;<sub>N</sub></center>
+<img src=./images/plot1.png>
+<h1> Graph 2: Plot depicting Average times (vs) iteration number </h1>
+The slopes of these average times i.e Average Step (S), Vellocity (V), Collision (C) and Position time(P) are similar to each other.This shows that averge step time includes these individual times, and its behaviour is very much dictated by these individual components of it.<br>
+The sum time(X) is
+<br><center>X=P+C+V</center><br><br>
+And the time taken by the Velocity is more than that by the Collision and Position iteration calculations. And this is why the Sum curve
+and the Velocity curve are adjacent.
+<br>
+<center></center>
+<img src=./images/plot2.png>
+<h1> Graph 3: Plot depicting Average Step Error Bars (vs) iteration number </h1>
+We ran the executable with the system being in a heavily loaded (90 % )state. As it was taking significantly more time than it took earlier,
+we have run only upto 100 iterations.
+Actually on carefully monitoring the cpu using <I> top</I> command we observed  that the cs296\_16\_exe sometime takes a large chunk of cpu in other time the programs share the space that might explain the large irregularities in the graph.
+When the iteration number is high the input sent to main.cpp being larger, the output is an average over a greater number. Thus the error nullifies when averaged over larger samples, and hence the error output attained at higher iterations is lower. This explains the decreasing error as the no. of iterations increase.
+
+<img src=./images/plot3.png>
+<h1> Graph 4: Depicting The Frequency Plot For Avg Step Time </h1>
+Most of the avg step times(for various rerun numbers) lie in the same bucket as the actual avg step time in our Histogram, whereas the points lying outside this bucket may have occured due to <I> experimental errors</I>.
+
+<img src=./images/plot4.png>
+<h1> Graph 5: Comparing Average Step Time of Full Sample and Random Sample </h1>
+When the number of iterations are large, it can be observed that the two
+graphs converge to a similar function and hence the best fit line is almost the same. This is due to the fact that
+when the iterations are huge, the number of data points is large and hence the error converges to zero. On the
+other hand, when we took a lower number of iterations, we could see the difference in the best fit lines of the two.
+
+<img src=./images/plot5.png>
+</body>
+</html>
