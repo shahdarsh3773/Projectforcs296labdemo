@@ -1,4 +1,4 @@
-/*
+	/*
 * Copyright (c) 2006-2007 Erin Catto http://www.box2d.org
 *
 * This software is provided 'as-is', without any express or implied
@@ -24,12 +24,10 @@
 
 //! These are user defined include files
 //! Included in double quotes - the path to find these has to be given at compile time
-#include <sys/time.h>
 #include "render.hpp"
 #include "cs296_base.hpp"
 #include "callbacks.hpp"
-#include <iostream>
-
+//#include "dominos.hpp"
 
 //! GLUI is the library used for drawing the GUI
 //! Learn more about GLUI by reading the GLUI documentation
@@ -44,7 +42,7 @@
 //! These are usually available at standard system paths like /usr/include
 //! Read about the use of include files in C++
 #include <cstdio>
-using namespace std;
+
 
 //! Notice the use of extern. Why is it used here?
 namespace cs296
@@ -68,7 +66,7 @@ using namespace cs296;
 
 
 //! This function creates all the GLUI gui elements
-/*void create_glui_ui(void)
+void create_glui_ui(void)
 {
   GLUI *glui = GLUI_Master.create_glui_subwindow( main_window, GLUI_SUBWINDOW_BOTTOM );
   
@@ -109,68 +107,30 @@ using namespace cs296;
   glui->add_button("Single Step", 0, callbacks_t::single_step_cb);
   glui->add_button("Restart", 0, callbacks_t::restart_cb);
   
-   ui->add_button("Quit", 0,(GLUI_Update_CB)callbacks_t::exit_cb);
+  glui->add_button("Quit", 0,(GLUI_Update_CB)callbacks_t::exit_cb);
   glui->set_main_gfx_window( main_window );
-}*/
+}
 
 
 //! This is the main function
 int main(int argc, char** argv)
 {
-  int iterations_num = atoi(argv[1]);
   test_count = 1;
   test_index = 0;
   test_selection = test_index;
   
-  entry = sim;
+  entry = cs296::sim;
   test = entry->create_fcn();
-    const b2World* mworld;
-    mworld = test->get_world();
-    float32 total_time=0;
-    float32 total_vel=0;
-    float32 total_pos=0;
-    float32 total_coll = 0;
-    //test->step(&settings);
-    //b2Profile p = mworld->GetProfile(); 
-    timeval tbeg;
-    gettimeofday(&tbeg, 0);
-    for(int y=0;y<iterations_num;y++){
-    test->step(&settings);
-    b2Profile p = mworld->GetProfile(); 
-    total_time+=p.step;
-    total_vel += p.solveVelocity;
-    total_pos += p.solvePosition;
-    total_coll += p.collide;
-    }
-    timeval tend;
-    gettimeofday(&tend, 0);
-    cout<<"Number of iterations: "<<iterations_num<<endl;
-    cout<<"Average time per step is ";
-    printf("%.4f",total_time/iterations_num);
-    cout<<"ms"<<endl;
-     cout<<"Average time for collisions is " ;
-     printf("%.4f",total_coll/iterations_num);
-    cout<<"ms"<<endl;
-    cout<<"Average time for velocity updates is " ;
-    printf("%.4f",total_vel/iterations_num);
-    cout<<"ms"<<endl;
-    cout<<"Average time for position updates is " ;
-    printf("%.4f",total_pos/iterations_num);
-    cout<<"ms"<<endl;
-    cout<<"Total loop time is ";
-    printf("%.4f",(tend.tv_sec - tbeg.tv_sec)*1000.0 + 0.001f*(tend.tv_usec - tbeg.tv_usec));
-    cout<<"ms"<<endl;
-    //cout<<"This is from the Box2D simulation for CS296 Lab 04. It has been made by Pratham Desai from Group 15."<<endl;
-/*
+
   //! This initializes GLUT
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);
   glutInitWindowSize(width, height);
-*/
+
   char title[50];
   sprintf(title, "CS296 Base Code. Running on Box2D %d.%d.%d", b2_version.major, b2_version.minor, b2_version.revision);
- /* main_window = glutCreateWindow(title);
- 
+  main_window = glutCreateWindow(title);
+
   //! Here we setup all the callbacks we need
   //! Some are set via GLUI
   GLUI_Master.set_glutReshapeFunc(callbacks_t::resize_cb);  
@@ -182,12 +142,12 @@ int main(int argc, char** argv)
   glutMotionFunc(callbacks_t::mouse_motion_cb);
   glutKeyboardUpFunc(callbacks_t::keyboard_up_cb); 
   glutTimerFunc(frame_period, callbacks_t::timer_cb, 0);
- 
+
   //! We create the GLUI user interface
   create_glui_ui();
- 
+
   //! Enter the infinite GLUT event loop
-  glutMainLoop(); */
+  glutMainLoop();
   
   return 0;
 }

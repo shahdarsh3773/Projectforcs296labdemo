@@ -79,7 +79,7 @@ FILESLIB := callbacks.o  cs296_base.o  dominos.o render.o
 
 .PHONY: all  setup doc distclean clean
 
-all: setup exe makelib exelib 
+all: setup exe partlib exelib 
 
 setup:  
 	@$(ECHO) "Setting up compilation..."
@@ -220,7 +220,7 @@ doc:
 	@$(DOXYGEN) $(DOCDIR)/Doxyfile 2 > /dev/null
 	@$(ECHO) "Done"
 
-makelib: setup $(OBJS) 
+partlib: setup $(OBJS) 
 	@ if [ $(SHARED_LIB) == true ]; then \
 	echo "true"; \
 	cd myobjs; \
@@ -233,7 +233,7 @@ makelib: setup $(OBJS)
 	echo "false"; \
 	fi
 
-exelib: makelib
+exelib: partlib
 	@ cd myobjs; \
 	$(CC) -o cs296_16_exelib $(LDFLAGS) -L ../mylibs/ -L ../external/lib/ main.o -lCS296test $(LIBS)
 	@ mv myobjs/cs296_16_exelib ./mybins
@@ -246,11 +246,11 @@ report :
 	@$(RM) -rf ./doc/cs296_project_report.log
 	@$(RM) -rf ./doc/texput.log
 
-plotPython: exe
+plot: exe
 	@ /opt/python3.3/bin/python3.3 ./scripts/g16_gen_csv.py
 	@ /opt/python3.3/bin/python3.3 ./scripts/g16_gen_plots.py
 
-profileReport: 
+profile: 
 	@ /opt/python3.3/bin/python3.3 ./scripts/g16_lab09_report.py 
 		
 dist: distclean

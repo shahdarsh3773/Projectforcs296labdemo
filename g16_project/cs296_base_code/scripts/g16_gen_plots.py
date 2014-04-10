@@ -6,7 +6,7 @@ import matplotlib.animation as animation
 
 itn_no=10
 rr_no=10
-roll_number=10#Dheeraj's Roll
+roll_number=10#Darsh's roll. Give 61 when you have more number of iteration numbers
 ran_no=5#number of random values to be chosen
 X=np.arange(itn_no)
 step_arr=[]

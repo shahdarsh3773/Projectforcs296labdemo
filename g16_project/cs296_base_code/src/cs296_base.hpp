@@ -27,7 +27,6 @@
 #define _CS296BASE_HPP_
 
 #include "render.hpp"
-#include "dominos.hpp"
 #include <Box2D/Box2D.h>
 #include <cstdlib>
 
@@ -44,17 +43,22 @@ namespace cs296
   typedef base_sim_t* sim_create_fcn(); 
 
   //! Simulation settings. Some can be controlled in the GUI.
+  /*!This is the definition of struct settings_t
+   * It specifies various default settings like velocity iterations, position iterations
+   * It also contains various variables for the same settings that can be used in the code later like for draw_shapes,draw_joints etc
+   */
+ 
   struct settings_t
   {
     //! Notice the initialization of the class members in the constructor
     //! How is this happening?
-    settings_t() :
+    settings_t():
       view_center(0.0f, 20.0f),
       hz(60.0f),
       velocity_iterations(8),
       position_iterations(3),
       draw_shapes(1),
-      draw_joints(0),
+      draw_joints(1),
       draw_AABBs(0),
       draw_pairs(0),
       draw_contact_points(0),
@@ -92,7 +96,9 @@ namespace cs296
     int32 pause;
     int32 single_step;
   };
-  
+  /*! Struct sim_t
+   * Contains a const char pointer(const string) and a pointer to sim_create_fcn
+   */
   struct sim_t
   {
     const char *name;
@@ -105,7 +111,11 @@ namespace cs296
   extern sim_t *sim;
   
   
-  const int32 k_max_contact_points = 2048;  
+  const int32 k_max_contact_points = 2048;
+  /*!struct contact_point_t
+   * Contains properties of a point of contact between two surfaces like normal, position of b2Vec2 type
+   *and state variable for b2PointState
+   */  
   struct contact_point_t
   {
     b2Fixture* fixtureA;
@@ -114,19 +124,21 @@ namespace cs296
     b2Vec2 position;
     b2PointState state;
   };
-  
+  /*!class base_sim_t, which is inherited from the class b2ContactListener
+   * contains several virtual functions, which can be redefined by a person using ths could and make personalised modifications
+   * also has functions that enables sensing of keyboard up-down arrows and mouse click
+   */
   class base_sim_t : public b2ContactListener
   {
   public:
     
     base_sim_t();
-
+    const b2World* get_world(void){return m_world;}
     //! Virtual destructors - amazing objects. Why are these necessary?
     virtual ~base_sim_t();
     
     void set_text_line(int32 line) { m_text_line = line; }
     void draw_title(int x, int y, const char *string);
-    
     virtual void step(settings_t* settings);
 
     virtual void keyboard(unsigned char key) { B2_NOT_USED(key); }
